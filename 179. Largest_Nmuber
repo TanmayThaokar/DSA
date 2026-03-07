@@ -1,0 +1,29 @@
+#include <bits/stdc++.h>
+class Solution {
+public:
+    string largestNumber(vector<int>& nums) {
+        
+        vector<string> arr;
+        
+        // Convert numbers to strings
+        for(int n : nums){
+            arr.push_back(to_string(n));
+        }
+
+        // Custom sort
+        sort(arr.begin(), arr.end(), [](string a, string b){
+            return a + b > b + a;
+        });
+
+        // Edge case: if largest element is "0"
+        if(arr[0] == "0") return "0";
+
+        // Join all strings
+        string result = "";
+        for(string s : arr){
+            result += s;
+        }
+
+        return result;
+    }
+};
